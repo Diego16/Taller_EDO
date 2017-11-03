@@ -22,7 +22,7 @@ f = lambda x, y: 2*y - 2*x**2 +x -3
 w2 = heun( f, a, b, N, IV )
 fig, axes = plt.subplots(1, 1, figsize=(8, 6))
 axes.plot( x, w2, label='Heun' )
-axes.plot( x, y(x), label='exacta' )
+axes.plot( x, y(x), label='Exacta' )
 axes.legend(loc=4)
 axes.grid(True)
 plt.show()
