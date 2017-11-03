@@ -36,9 +36,7 @@ y = sympy.Function('y')
 ics = {y(0): 1}
 f = y(x)+x-x**2+1
 edo_sol = sympy.dsolve(y(x).diff(x)-f)
-edo_sol
 C_eq = sympy.Eq(edo_sol.lhs.subs(x, 0).subs(ics), edo_sol.rhs.subs(x, 0))
-C_eq
 sympy.solve(C_eq)
 fig, axes = plt.subplots(1, 1, figsize=(8, 6))
 campo_dir = plot_direction_field(x, y(x), f, ax=axes)
@@ -48,8 +46,6 @@ xp = np.linspace(0, 1.9, 100)
 yp = integrate.odeint(f_np, y0, xp)
 xn = np.linspace(0, -5, 100)
 yn = integrate.odeint(f_np, y0, xn)
-xn
-yn
 def f(x,y): return y-x**2+x+1
 [u,v]=euler(f,0,1,0.1,20)
 axes.plot(u,v,'or')

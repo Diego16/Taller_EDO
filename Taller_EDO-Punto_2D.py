@@ -34,11 +34,9 @@ sy.init_printing(use_latex='mathjax')
 x = sy.Symbol('x')
 y = sy.Function('y')
 ics = {y(0): 1}
-f = y(x)+x-x**2+1
+f = 2*y(x) - 2*x**2 + x - 3
 edo_sol = sy.dsolve(y(x).diff(x)-f)
-edo_sol
 C_eq = sy.Eq(edo_sol.lhs.subs(x, 0).subs(ics), edo_sol.rhs.subs(x, 0))
-C_eq
 sy.solve(C_eq)
 fig, axes = plt.subplots(1, 1, figsize=(8, 6))
 campo_dir = plot_direction_field(x, y(x), f, ax=axes)
@@ -48,20 +46,16 @@ xp = np.linspace(0, 1.9, 100)
 yp = integrate.odeint(f_np, y0, xp)
 xn = np.linspace(0, -5, 100)
 yn = integrate.odeint(f_np, y0, xn)
-xn
-yn
-f1 = (x/2)+x**2-(sy.exp(2*x)*11/20)+(7/4) 
+f1 = (x/2)+x**2-(exp(2*x)*11/20)+(7/4) 
 f1_np = sy.lambdify((y(x), x), f1)
 x1p = np.linspace(0, 1.9, 100)
 y1p = integrate.odeint(f1_np, y0, x1p)
 x1n = np.linspace(0, -5, 100)
 y1n = integrate.odeint(f1_np, y0, x1n)
-xn
-yn
-def f(x,y): return y-x**2+x+1
+def f(x,y): return 2*y - 2*x**2 + x - 3
 [u,v]=euler(f,0,1,0.1,20)
 axes.plot(u,v,'or')
-def y(x): return exp(x)+x**2+x
+def y(x): return x/2 + x**2 - (exp(2*x)*11/20) + 7/4
 x=arange(0,2.1,0.1)
 axes.plot(x,y(x),'ob')
 axes.grid(True)
